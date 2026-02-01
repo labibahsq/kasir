@@ -22,13 +22,7 @@ class _LoginviewState extends State<Loginview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-        backgroundColor: Colors.brown,
-        foregroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-      ),
-      backgroundColor: const Color(0xFFFEFDF2),
+      backgroundColor: const Color(0xFFF2EFE9),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(10),
@@ -38,16 +32,29 @@ class _LoginviewState extends State<Loginview> {
             children: [
               const SizedBox(height: 60),
               Column(
-                children: [Image.asset('assets/Kerajaan.png', height: 250)],
+                children: [Image.asset('assets/logonama.png', height: 250)],
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 60),
 
               Form(
                 key: formKey,
                 child: Column(
                   children: [
-                    _inputField("Email", email),
+                    TextFormField(
+                      controller: email,
+                      decoration: _inputDecoration(
+                        "E-mail",
+                        icon: Icons.email_outlined,
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Email harus diisi';
+                        }
+                        return null;
+                      },
+                    ),
+
                     const SizedBox(height: 12),
 
                     TextFormField(
@@ -158,12 +165,32 @@ class _LoginviewState extends State<Loginview> {
     );
   }
 
-  InputDecoration _inputDecoration(String hint) {
+  InputDecoration _inputDecoration(
+    String hint, {
+    IconData? icon,
+    Widget? suffixIcon,
+  }) {
     return InputDecoration(
       hintText: hint,
+      prefixIcon: icon != null
+          ? Icon(icon, color: const Color(0xFFC5A059))
+          : null,
+      suffixIcon: suffixIcon,
       filled: true,
-      fillColor: const Color(0xFFFEFDF2),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      fillColor: const Color(0xFFF9F7F0), // warna kotak lembut
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
+      ),
+      contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
     );
   }
 }

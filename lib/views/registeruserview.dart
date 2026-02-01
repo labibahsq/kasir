@@ -26,13 +26,7 @@ class _RegisteruserviewState extends State<Registeruserview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Register"),
-        backgroundColor: Colors.brown,
-        foregroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-      ),
-      backgroundColor: const Color(0xFFFEFDF2),
+      backgroundColor: const Color(0xFFF2EFE9),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),
@@ -41,7 +35,7 @@ class _RegisteruserviewState extends State<Registeruserview> {
               const SizedBox(height: 60),
 
               Column(
-                children: [Image.asset('assets/Kerajaan.png', height: 250)],
+                children: [Image.asset('assets/logonama.png', height: 250)],
               ),
 
               const SizedBox(height: 40),
@@ -220,12 +214,32 @@ class _RegisteruserviewState extends State<Registeruserview> {
     );
   }
 
-  InputDecoration _inputDecoration(String hint) {
+  InputDecoration _inputDecoration(
+    String hint, {
+    IconData? icon,
+    Widget? suffixIcon,
+  }) {
     return InputDecoration(
       hintText: hint,
+      prefixIcon: icon != null
+          ? Icon(icon, color: const Color(0xFFC5A059))
+          : null,
+      suffixIcon: suffixIcon,
       filled: true,
-      fillColor: const Color(0xFFFEFDF2),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      fillColor: const Color(0xFFF9F7F0), // warna kotak lembut
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
+      ),
+      contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
     );
   }
 }

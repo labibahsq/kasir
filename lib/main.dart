@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/views/admin.dart';
 import 'package:flutter_application_9/views/dashboard.dart';
+import 'package:flutter_application_9/views/kasir.dart';
 import 'package:flutter_application_9/views/loginview.dart';
 import 'package:flutter_application_9/views/registeruserview.dart';
 
@@ -15,9 +17,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/login',
       routes: {
-        '/login': (context) => Loginview(),
         '/': (context) => Registeruserview(),
+        '/login': (context) => Loginview(),
         '/dashboard': (context) => Dashboard(),
+        '/admin' : (context) => AdminView(),
+        '/kasir' : (context) => KasirView(),
       },
     );
   }
